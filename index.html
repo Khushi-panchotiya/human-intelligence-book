@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Intelligence — Understanding the Mind That Makes Us Human</title>
+  <meta name="description" content="A comprehensive exploration of neuroscience, psychology, AI, and education — what intelligence is, how it works, and what makes us uniquely human." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══ HERO / LANDING ═══ -->
+<section id="landing" class="landing">
+  <div class="landing-bg">
+    <div class="neural-net" id="neuralCanvas"></div>
+    <div class="landing-gradient"></div>
+  </div>
+  <div class="landing-content">
+    <div class="eyebrow">A Book</div>
+    <h1 class="book-title">Human<br>Intelligence</h1>
+    <p class="book-subtitle">Understanding the Mind That Makes Us Human</p>
+    <p class="book-description">
+      A comprehensive exploration of neuroscience, psychology, education, and artificial intelligence — 
+      what intelligence is, how it unfolds across a lifetime, and what makes the human mind irreplaceable.
+    </p>
+    <div class="landing-cta">
+      <button class="btn-primary" onclick="startReading()">Start Reading</button>
+      <button class="btn-outline" onclick="showTOC()">Table of Contents</button>
+    </div>
+    <div class="chapter-count">11 Chapters &nbsp;·&nbsp; Preface &amp; Conclusion &nbsp;·&nbsp; Select Bibliography</div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll to explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ TOC OVERLAY ═══ -->
+<div class="toc-overlay" id="tocOverlay" onclick="hideTOC(event)">
+  <div class="toc-panel">
+    <button class="toc-close" onclick="hideTOC()">✕</button>
+    <div class="toc-header">
+      <div class="toc-eyebrow">Table of Contents</div>
+      <h2>Human Intelligence</h2>
+    </div>
+    <nav class="toc-list">
+      <a class="toc-item" href="#" onclick="loadChapter('preface'); hideTOC()">
+        <span class="toc-num">—</span>
+        <span class="toc-title">Preface</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(0); hideTOC()">
+        <span class="toc-num">01</span>
+        <span class="toc-title">What Is Intelligence?</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(1); hideTOC()">
+        <span class="toc-num">02</span>
+        <span class="toc-title">The Biology of Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(2); hideTOC()">
+        <span class="toc-num">03</span>
+        <span class="toc-title">Theories of Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(3); hideTOC()">
+        <span class="toc-num">04</span>
+        <span class="toc-title">IQ — What It Is and What It Isn't</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(4); hideTOC()">
+        <span class="toc-num">05</span>
+        <span class="toc-title">Memory, Learning, and Cognition</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(5); hideTOC()">
+        <span class="toc-num">06</span>
+        <span class="toc-title">Emotional Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(6); hideTOC()">
+        <span class="toc-num">07</span>
+        <span class="toc-title">Creativity, Language, and Social Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(7); hideTOC()">
+        <span class="toc-num">08</span>
+        <span class="toc-title">Intelligence and Education</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(8); hideTOC()">
+        <span class="toc-num">09</span>
+        <span class="toc-title">AI vs. Human Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(9); hideTOC()">
+        <span class="toc-num">10</span>
+        <span class="toc-title">Intelligence Across the Lifespan</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter(10); hideTOC()">
+        <span class="toc-num">11</span>
+        <span class="toc-title">The Future of Human Intelligence</span>
+      </a>
+      <a class="toc-item" href="#" onclick="loadChapter('conclusion'); hideTOC()">
+        <span class="toc-num">—</span>
+        <span class="toc-title">Conclusion</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══ READER ═══ -->
+<div class="reader" id="reader">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo" onclick="goHome()">
+      <div class="sidebar-logo-icon">HI</div>
+      <div class="sidebar-logo-text">Human<br>Intelligence</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="snav-item" href="#" onclick="loadChapter('preface')">Preface</a>
+      <div id="chapterLinks"></div>
+      <a class="snav-item" href="#" onclick="loadChapter('conclusion')">Conclusion</a>
+      <a class="snav-item" href="#" onclick="loadChapter('bibliography')">Bibliography</a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="reader-main" id="readerMain">
+    <header class="reader-topbar">
+      <button class="hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar-title" id="topbarTitle">Human Intelligence</div>
+      <button class="toc-btn" onclick="showTOC()">Contents</button>
+    </header>
+    <div class="chapter-content" id="chapterContent">
+      <!-- Loaded dynamically -->
+    </div>
+    <footer class="chapter-footer" id="chapterFooter">
+      <!-- Prev / Next nav -->
+    </footer>
+  </main>
+</div>
+
+<script src="book.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
