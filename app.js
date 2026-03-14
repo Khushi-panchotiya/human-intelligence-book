@@ -135,10 +135,15 @@ function buildFooterNav(key) {
   const prevKey = idx > 0 ? CHAPTER_ORDER[idx - 1] : null;
   const nextKey = idx < CHAPTER_ORDER.length - 1 ? CHAPTER_ORDER[idx + 1] : null;
 
+  // Produce the correct JS literal: numbers unquoted, strings quoted
+  function keyLiteral(k) {
+    return typeof k === 'number' ? k : `'${k}'`;
+  }
+
   let html = '';
   if (prevKey !== null) {
     const prev = getChapterData(prevKey);
-    html += `<button class="nav-btn prev" onclick="loadChapter('${prevKey}')">
+    html += `<button class="nav-btn prev" onclick="loadChapter(${keyLiteral(prevKey)})">
       <span class="nav-btn-label">← Previous</span>
       <span class="nav-btn-title">${prev.title}</span>
     </button>`;
@@ -147,7 +152,7 @@ function buildFooterNav(key) {
   }
   if (nextKey !== null) {
     const next = getChapterData(nextKey);
-    html += `<button class="nav-btn next" onclick="loadChapter('${nextKey}')">
+    html += `<button class="nav-btn next" onclick="loadChapter(${keyLiteral(nextKey)})">
       <span class="nav-btn-label">Next →</span>
       <span class="nav-btn-title">${next.title}</span>
     </button>`;
